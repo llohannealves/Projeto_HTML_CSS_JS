@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Fit - Academia & Treinamentos</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* Adicionando um estilo básico para o carrinho de compras pop-up */
+.carrinho-modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.carrinho-conteudo {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+}
+.fechar-carrinho {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.fechar-carrinho:hover,
+.fechar-carrinho:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.carrinho-total {
+    margin-top: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.btn-carrinho {
+    /* Estilo básico para o botão de carrinho no cabeçalho */
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-left: 20px;
+}
+</style>
+</head>
+<body>
+         
+<header>
+<div class="logo"><img src="Imagens/Logo.png" alt=""height="100px" width="100px"></div>
+<nav>
+<ul>
+<li><a href="#inicio">Início</a></li>
+<li><a href="#planos">Planos</a></li>
+<li><a href="#programas">Programas</a></li>
+<li><a href="#sobre">Sobre</a></li>
+<li><a href="#contato">Contato</a></li>
+</ul>
+<button class="btn-carrinho" onclick="exibirCarrinho()">🛒 Ver Carrinho (<span id="contador-carrinho">0</span>)</button>
+</nav>
+</header>
+
+<section id="inicio" class="banner">
+<img src="Imagens/banner_academia.png" alt="Banner Academia" >
+<div class="banner-texto">
+<h1>Transforme Seu Corpo. Transforme Sua Vida.</h1>
+<p>Treinos personalizados, qualidade e resultado para todos os níveis.</p>
+<a href="#planos" class="btn">Conheça Nossos Planos</a>
+</div>
+</section>
+
+<section id="planos" class="produtos">
+<h2>💪 Planos Tech Fit</h2>
+<div class="grade-produtos">
+<article class="produto">
+<img src="Imagens/plano1.jpeg" alt="Plano Mensal">
+<h3>Plano Mensal</h3>
+<p>Acesso ilimitado, sem fidelidade, perfeito para quem quer começar.</p>
+<span class="preco-plano" data-preco="89.90">R$ 89,90</span>
+<button onclick="adicionarAoCarrinho('Plano Mensal', 89.90)">Adicionar ao Carrinho</button>
+</article>
+
+<article class="produto">
+<img src="Imagens/plano2.jpeg" alt="Plano Trimestral">
+<h3>Plano Trimestral</h3>
+<p>Economia e consistência. Ideal para conquistar disciplina.</p>
+<span class="preco-plano" data-preco="239.90">R$ 239,90</span>
+<button onclick="adicionarAoCarrinho('Plano Trimestral', 239.90)">Adicionar ao Carrinho</button>
+</article>
+
+<article class="produto">
+<img src="Imagens/plano3.jpeg" alt="Plano Anual">
+<h3>Plano Anual</h3>
+<p>Melhor custo-benefício. Resultados garantidos!</p>
+<span class="preco-plano" data-preco="699.90">R$ 699,90</span>
+<button onclick="adicionarAoCarrinho('Plano Anual', 699.90)">Adicionar ao Carrinho</button>
+</article>
+</div>
+</section>
+
+<section id="programas" class="produtos">
+<h2>🔥 Programas Especializados</h2>
+<div class="grade-produtos">
+
+<article class="produto">
+<img src="Imagens/funcional.webp" alt="Treinamento Funcional">
+<h3>Treinamento Funcional</h3>
+<p>Melhore condicionamento, força e mobilidade com treinos dinâmicos.</p>
+<span class="preco-programa" data-preco="59.90">R$ 59,90/mês</span>
+<button onclick="adicionarAoCarrinho('Treinamento Funcional', 59.90)">Adicionar ao Carrinho</button>
+</article>
+
+<article class="produto">
+<img src="Imagens/musculacao.webp" alt="Musculação Premium">
+<h3>Musculação Premium</h3>
+<p>Acompanhamento completo, máquinas modernas e treinos personalizados.</p>
+<span class="preco-programa" data-preco="79.90">R$ 79,90/mês</span>
+<button onclick="adicionarAoCarrinho('Musculação Premium', 79.90)">Adicionar ao Carrinho</button>
+</article>
+
+<article class="produto">
+<img src="Imagens/hiit.webp" alt="HIIT">
+<h3>HIIT</h3>
+<p>Alta intensidade para resultados rápidos: perda de peso e condicionamento.</p>
+<span class="preco-programa" data-preco="49.90">R$ 49,90/mês</span>
+<button onclick="adicionarAoCarrinho('HIIT', 49.90)">Adicionar ao Carrinho</button>
+</article>
+
+</div>
+</section>
+
+<section id="sobre" class="sobre">
+<h2>🏆 Sobre a Tech Fit</h2>
+<div class="conteudo-sobre">
+<img src="Imagens/sala_academia.png" alt="Academia Tech Fit">
+<p>
+A Tech Fit nasceu para redefinir a maneira como você treina.  
+Oferecemos estrutura moderna, equipamentos de última geração e profissionais especializados em performance e saúde.
+
+Nosso objetivo é simples: **entregar resultados reais e duradouros**, independente do nível do aluno.
+
+Aqui você encontra motivação, acompanhamento e uma comunidade que treina junto e evolui junto.
+
+Tech Fit — tecnologia, performance e saúde em um só lugar. 💪🔥
+</p>
+</div>
+</section>
+
+<section id="contato" class="contato">
+<h2>📞 Fale Conosco</h2>
+<form>
+<input type="text" placeholder="Nome completo" required>
+<input type="email" placeholder="E-mail" required>
+<textarea placeholder="Mensagem" required></textarea>
+<button type="submit">Enviar mensagem</button>
+</form>
+</section>
+
+<footer>
+<p>© 2025 Tech Fit – Todos os direitos reservados.</p>
+<p>CNPJ: 00.000.000/0001-00 | Endereço: Rua Exemplo, 100 – Brasília - DF</p>
+</footer>
+
+<div id="carrinho-modal" class="carrinho-modal">
+    <div class="carrinho-conteudo">
+        <span class="fechar-carrinho" onclick="fecharCarrinho()">&times;</span>
+        <h3>🛒 Seu Carrinho de Compras Tech Fit</h3>
+        <ul id="lista-carrinho">
+            </ul>
+        <div class="carrinho-total">Total: <span id="valor-total">R$ 0,00</span></div>
+        <button onclick="alert('Funcionalidade de Checkout ainda não implementada!')">Finalizar Compra</button>
+    </div>
+</div>
+
+<script>
+// Array para armazenar os itens do carrinho
+let carrinho = [];
+
+// Função para atualizar o contador no botão do cabeçalho
+function atualizarContadorCarrinho() {
+    document.getElementById('contador-carrinho').textContent = carrinho.length;
+}
+
+// Função para adicionar um item ao carrinho
+function adicionarAoCarrinho(nome, preco) {
+    // Cria um objeto item
+    const novoItem = { nome: nome, preco: preco };
+    
+    // Adiciona o item ao array do carrinho
+    carrinho.push(novoItem);
+    
+    // Alerta de confirmação
+    alert(`${nome} (R$ ${preco.toFixed(2).replace('.', ',')}) foi adicionado ao seu carrinho!`);
+
+    // Atualiza o contador visual
+    atualizarContadorCarrinho();
+}
+
+// Função para calcular e exibir o carrinho (no modal)
+function exibirCarrinho() {
+    const listaCarrinho = document.getElementById('lista-carrinho');
+    const valorTotalElement = document.getElementById('valor-total');
+    let total = 0;
+    
+    // Limpa a lista atual
+    listaCarrinho.innerHTML = '';
+    
+    // Verifica se o carrinho está vazio
+    if (carrinho.length === 0) {
+        listaCarrinho.innerHTML = '<li>O carrinho está vazio.</li>';
+        valorTotalElement.textContent = 'R$ 0,00';
+    } else {
+        // Percorre o array e adiciona os itens à lista
+        carrinho.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2).replace('.', ',')}`;
+            
+            // Botão para remover item (opcional, mas útil)
+            const btnRemover = document.createElement('button');
+            btnRemover.textContent = 'Remover';
+            btnRemover.style.marginLeft = '10px';
+            btnRemover.onclick = () => removerDoCarrinho(index);
+            
+            li.appendChild(btnRemover);
+            listaCarrinho.appendChild(li);
+            
+            // Soma o total
+            total += item.preco;
+        });
+        
+        // Atualiza o valor total
+        valorTotalElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+    
+    // Exibe o modal
+    document.getElementById('carrinho-modal').style.display = 'block';
+}
+
+// Função para remover um item pelo índice
+function removerDoCarrinho(index) {
+    carrinho.splice(index, 1); // Remove 1 elemento na posição 'index'
+    exibirCarrinho(); // Atualiza a exibição do carrinho
+    atualizarContadorCarrinho(); // Atualiza o contador
+}
+
+// Função para fechar o modal
+function fecharCarrinho() {
+    document.getElementById('carrinho-modal').style.display = 'none';
+}
+
+// Inicializa o contador
+atualizarContadorCarrinho();
+
+
+
+</script>
+
+</body>
+</html>

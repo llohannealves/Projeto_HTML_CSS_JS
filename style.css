@@ -1,0 +1,160 @@
+/* Cores: bordô + cinza claro */
+:root {
+    --bordo: #6d0019;
+    --bordo-escuro: #4b0012;
+    --cinza: #f2f2f2;
+    --cinza-escuro: #d9d9d9;
+    --preto: #222;
+}
+
+/* GLOBAL */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--cinza);
+    color: var(--preto);
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bordo);
+    padding: 15px 40px;
+    color: white;
+}
+
+header .logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* BANNER */
+.banner {
+    position: relative;
+    width: 100%;
+}
+
+.banner img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+}
+
+.banner-texto {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    color: white;
+    max-width: 400px;
+}
+
+.banner-texto h1 {
+    font-size: 40px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--bordo);
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* SEÇÕES */
+section {
+    padding: 60px 40px;
+}
+
+/* GRID */
+.produtos h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.grade-produtos {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.produto {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid var(--cinza-escuro);
+}
+
+.produto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.produto button {
+    background: var(--bordo);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    margin-top: 10px;
+    border-radius: 6px;
+}
+
+/* SOBRE */
+.sobre .conteudo-sobre {
+    display: flex;
+    gap: 30px;
+}
+
+.sobre img {
+    width: 45%;
+    border-radius: 10px;
+}
+
+/* CONTATO */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+}
+
+input, textarea {
+    padding: 12px;
+    border: 1px solid var(--cinza-escuro);
+    border-radius: 5px;
+}
+
+button {
+    background: var(--bordo);
+    padding: 12px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    background: var(--bordo);
+    color: white;
+    padding: 20px;
+}
